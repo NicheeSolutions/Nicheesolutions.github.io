@@ -321,6 +321,53 @@
             font-size: 14px;
             color: #ccc;
         }
+
+        /* ==============================
+           MORE ASSETS
+        ============================== */
+
+        .coming-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: #292929;
+            border: 1px solid #292929;
+        }
+
+        .coming-card {
+            background: #0b0b0b;
+            min-height: 240px;
+            padding: 30px;
+            position: relative;
+            transition: background .15s ease;
+        }
+
+        .coming-card:hover {
+            background: #111;
+        }
+
+        .coming-number {
+            color: #444;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 16px;
+            position: absolute;
+            top: 25px;
+            right: 25px;
+        }
+
+        .coming-card h3 {
+            font-family: "Barlow Condensed", sans-serif;
+            text-transform: uppercase;
+            font-size: 36px;
+            margin-top: 80px;
+        }
+
+        .coming-card p {
+            color: #666;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
         /* ==============================
            ABOUT
         ============================== */
