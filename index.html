@@ -4,26 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>nicheesolutions | Unity Developer & Asset Publisher</title>
-
-    <meta
-        name="description"
-        content="nicheesolutions — Unity developer and asset publisher creating tools, systems and assets for game developers."
-    >
+    <title>nicheesolutions — Unity Assets</title>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
         :root {
-            --bg: #07090d;
-            --bg-soft: #0d1118;
-            --card: #111720;
-            --card-hover: #151d28;
-            --border: rgba(255,255,255,0.08);
-            --text: #f5f7fa;
-            --muted: #9aa6b5;
-            --accent: #6c63ff;
-            --accent-2: #00d4ff;
-            --success: #58e68b;
-            --max-width: 1180px;
+            --black: #050505;
+            --dark: #101010;
+            --gray-dark: #1a1a1a;
+            --gray: #777;
+            --gray-light: #bdbdbd;
+            --white: #f1f1f1;
+            --line: #292929;
         }
 
         * {
@@ -37,21 +30,9 @@
         }
 
         body {
-            font-family:
-                Inter,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
-            background:
-                radial-gradient(circle at 80% 10%, rgba(108,99,255,0.15), transparent 30%),
-                radial-gradient(circle at 10% 30%, rgba(0,212,255,0.08), transparent 25%),
-                var(--bg);
-            color: var(--text);
-            line-height: 1.6;
+            background: var(--black);
+            color: var(--white);
+            font-family: "Inter", Arial, sans-serif;
         }
 
         a {
@@ -59,592 +40,535 @@
             text-decoration: none;
         }
 
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
         .container {
-            width: min(92%, var(--max-width));
+            width: min(1180px, calc(100% - 40px));
             margin: auto;
         }
 
-        /* =========================
-           NAVIGATION
-        ========================== */
+        /* ==============================
+           HEADER
+        ============================== */
 
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(7, 9, 13, 0.82);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid var(--border);
+        header {
+            height: 78px;
+            border-bottom: 1px solid var(--line);
+            background: #080808;
         }
 
-        .nav-inner {
-            height: 72px;
+        .header-inner {
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .logo {
-            font-size: 1.15rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+        .brand {
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: lowercase;
         }
 
-        .logo span {
-            color: var(--accent);
+        .brand span {
+            color: #888;
         }
 
-        .nav-links {
+        nav {
             display: flex;
-            gap: 28px;
-            align-items: center;
-            list-style: none;
+            gap: 30px;
         }
 
-        .nav-links a {
-            color: var(--muted);
-            font-size: 0.92rem;
-            transition: 0.2s ease;
+        nav a {
+            font-family: "Barlow Condensed", sans-serif;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: #888;
+            transition: color .15s ease;
         }
 
-        .nav-links a:hover {
+        nav a:hover {
             color: white;
         }
 
-        .nav-button {
-            padding: 9px 16px;
-            border: 1px solid rgba(108,99,255,0.5);
-            border-radius: 8px;
-            color: white !important;
-            background: rgba(108,99,255,0.12);
-        }
-
-        /* =========================
+        /* ==============================
            HERO
-        ========================== */
+        ============================== */
 
         .hero {
             min-height: 720px;
+            border-bottom: 1px solid var(--line);
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 70px;
-            align-items: center;
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -180px;
+            top: 50%;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #181818;
+            transform: translateY(-50%) rotate(45deg);
+            pointer-events: none;
         }
 
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 7px 12px;
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            background: rgba(255,255,255,0.025);
-            color: var(--muted);
-            font-size: 0.82rem;
-            margin-bottom: 22px;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
         }
 
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--success);
-            box-shadow: 0 0 12px var(--success);
+        .small-title {
+            font-family: "Barlow Condensed", sans-serif;
+            color: #777;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: clamp(3rem, 7vw, 6rem);
-            line-height: 0.95;
-            letter-spacing: -5px;
-            margin-bottom: 25px;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: clamp(70px, 12vw, 150px);
+            font-weight: 800;
+            line-height: .78;
+            letter-spacing: -3px;
+            text-transform: uppercase;
         }
 
-        .gradient-text {
-            background: linear-gradient(
-                100deg,
-                #ffffff 10%,
-                #aaa5ff 45%,
-                #00d4ff 100%
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
+        h1 .outline {
             color: transparent;
+            -webkit-text-stroke: 1px #666;
         }
 
         .hero-description {
-            color: var(--muted);
-            font-size: 1.1rem;
-            max-width: 620px;
-            margin-bottom: 32px;
+            max-width: 540px;
+            color: #999;
+            margin-top: 40px;
+            font-size: 15px;
+            line-height: 1.8;
         }
 
         .hero-buttons {
+            margin-top: 30px;
             display: flex;
-            flex-wrap: wrap;
             gap: 12px;
         }
 
         .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-            padding: 13px 20px;
-            border-radius: 9px;
+            display: inline-block;
+            padding: 13px 21px;
+            border: 1px solid #555;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 15px;
             font-weight: 700;
-            font-size: 0.92rem;
-            transition: 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: .15s ease;
         }
 
-        .button-primary {
-            background: linear-gradient(135deg, var(--accent), #554cff);
-            box-shadow: 0 12px 30px rgba(108,99,255,0.2);
+        .button:hover {
+            background: white;
+            color: black;
+            border-color: white;
         }
 
-        .button-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 40px rgba(108,99,255,0.3);
+        .button.primary {
+            background: white;
+            color: black;
+            border-color: white;
         }
 
-        .button-secondary {
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.025);
+        .button.primary:hover {
+            background: #bdbdbd;
         }
 
-        .button-secondary:hover {
-            background: rgba(255,255,255,0.07);
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           HERO VISUAL
-        ========================== */
-
-        .hero-visual {
-            position: relative;
-            min-height: 430px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .orb {
-            position: absolute;
-            width: 330px;
-            height: 330px;
-            border-radius: 50%;
-            background:
-                radial-gradient(
-                    circle at 35% 30%,
-                    rgba(0,212,255,0.9),
-                    rgba(108,99,255,0.45) 35%,
-                    transparent 70%
-                );
-            filter: blur(10px);
-            opacity: 0.65;
-        }
-
-        .code-card {
-            position: relative;
-            width: min(100%, 460px);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            background: rgba(12,16,23,0.9);
-            box-shadow:
-                0 30px 80px rgba(0,0,0,0.5),
-                0 0 80px rgba(108,99,255,0.12);
-            overflow: hidden;
-        }
-
-        .code-top {
-            height: 42px;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            padding: 0 15px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .code-dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #ff5f57;
-        }
-
-        .code-dot:nth-child(2) {
-            background: #ffbd2e;
-        }
-
-        .code-dot:nth-child(3) {
-            background: #28c840;
-        }
-
-        pre {
-            padding: 24px;
-            overflow: auto;
-            color: #b7c4d6;
-            font-size: 0.82rem;
-            line-height: 1.8;
-        }
-
-        .purple {
-            color: #b69cff;
-        }
-
-        .cyan {
-            color: #55e6ff;
-        }
-
-        .green {
-            color: #78e08f;
-        }
-
-        .orange {
-            color: #ffbd69;
-        }
-
-        /* =========================
-           SECTIONS
-        ========================== */
+        /* ==============================
+           SECTION
+        ============================== */
 
         section {
-            padding: 100px 0;
+            padding: 110px 0;
+            border-bottom: 1px solid var(--line);
         }
 
-        .section-heading {
-            max-width: 700px;
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
             margin-bottom: 45px;
+            gap: 30px;
         }
 
-        .section-label {
-            color: var(--accent-2);
-            text-transform: uppercase;
+        .section-number {
+            font-family: "Barlow Condensed", sans-serif;
+            color: #555;
+            font-size: 14px;
             letter-spacing: 2px;
-            font-size: 0.72rem;
-            font-weight: 800;
-            margin-bottom: 10px;
         }
 
         h2 {
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            letter-spacing: -2px;
-            line-height: 1.05;
-            margin-bottom: 15px;
+            font-family: "Barlow Condensed", sans-serif;
+            text-transform: uppercase;
+            font-size: 60px;
+            line-height: .9;
+            font-weight: 700;
         }
 
-        .section-description {
-            color: var(--muted);
+        .section-header p {
+            max-width: 430px;
+            color: #777;
+            font-size: 14px;
+            line-height: 1.7;
         }
 
-        /* =========================
-           ASSET CARD
-        ========================== */
+        /* ==============================
+           FEATURED ASSET
+        ============================== */
 
-        .assets-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .asset-card {
-            background: linear-gradient(
-                145deg,
-                rgba(255,255,255,0.045),
-                rgba(255,255,255,0.015)
-            );
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: 0.25s ease;
-        }
-
-        .asset-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(108,99,255,0.45);
-            background: var(--card-hover);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        .asset {
+            border: 1px solid #292929;
+            background: #0d0d0d;
         }
 
         .asset-image {
-            min-height: 220px;
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(108,99,255,0.18),
-                    rgba(0,212,255,0.06)
-                );
+            position: relative;
+            background: #cfcfcf;
+            overflow: hidden;
         }
 
-        .asset-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 22px;
-            display: grid;
-            place-items: center;
-            font-size: 2.4rem;
-            font-weight: 900;
-            background:
-                linear-gradient(135deg, #665cff, #00c9ff);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+        .asset-image img {
+            width: 100%;
+            height: auto;
         }
 
-        .asset-content {
-            padding: 25px;
-        }
-
-        .asset-status {
-            display: inline-block;
-            color: #7de99e;
-            background: rgba(88,230,139,0.08);
-            border: 1px solid rgba(88,230,139,0.15);
-            border-radius: 100px;
-            padding: 4px 9px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            margin-bottom: 13px;
-        }
-
-        .asset-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 9px;
-        }
-
-        .asset-content p {
-            color: var(--muted);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .asset-link {
-            color: #aaa5ff;
-            font-weight: 700;
-            font-size: 0.88rem;
-        }
-
-        .asset-link:hover {
+        .asset-image-label {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            background: #050505;
             color: white;
+            padding: 8px 12px;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* =========================
-           ABOUT
-        ========================== */
-
-        .about-grid {
+        .asset-info {
             display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 70px;
-            align-items: center;
+            grid-template-columns: 1fr 300px;
+            border-top: 1px solid #292929;
         }
 
-        .about-box {
+        .asset-main {
             padding: 35px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.025);
-            border-radius: 16px;
         }
 
-        .about-box h3 {
-            font-size: 1.4rem;
+        .asset-main h3 {
+            font-family: "Barlow Condensed", sans-serif;
+            text-transform: uppercase;
+            font-size: 43px;
+            line-height: 1;
             margin-bottom: 15px;
         }
 
-        .about-box p {
-            color: var(--muted);
+        .asset-main p {
+            max-width: 680px;
+            color: #888;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
-        .principles {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 25px;
+        .asset-side {
+            padding: 35px;
+            border-left: 1px solid #292929;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .principle {
-            padding: 20px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: rgba(255,255,255,0.018);
+        .asset-meta {
+            margin-bottom: 25px;
         }
 
-        .principle strong {
-            display: block;
+        .meta-label {
+            color: #555;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 5px;
         }
 
-        .principle span {
-            color: var(--muted);
-            font-size: 0.84rem;
+        .meta-value {
+            font-size: 14px;
+            color: #ccc;
         }
 
-        /* =========================
-           YOUTUBE
-        ========================== */
+        /* ==============================
+           MORE ASSETS
+        ============================== */
 
-        .youtube-section {
-            background:
-                linear-gradient(
-                    120deg,
-                    rgba(108,99,255,0.08),
-                    rgba(0,212,255,0.04)
-                );
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .youtube-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 40px;
-            padding: 45px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            background: rgba(8,11,16,0.65);
-        }
-
-        .youtube-icon {
-            width: 65px;
-            height: 65px;
-            border-radius: 15px;
+        .coming-grid {
             display: grid;
-            place-items: center;
-            background: #ff0033;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: #292929;
+            border: 1px solid #292929;
         }
 
-        .youtube-box h2 {
-            margin-bottom: 10px;
+        .coming-card {
+            background: #0b0b0b;
+            min-height: 240px;
+            padding: 30px;
+            position: relative;
+            transition: background .15s ease;
         }
 
-        .youtube-box p {
-            color: var(--muted);
-            max-width: 650px;
+        .coming-card:hover {
+            background: #111;
         }
 
-        /* =========================
-           CTA
-        ========================== */
-
-        .cta {
-            text-align: center;
-            padding: 120px 0;
+        .coming-number {
+            color: #444;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 16px;
+            position: absolute;
+            top: 25px;
+            right: 25px;
         }
 
-        .cta h2 {
-            max-width: 800px;
-            margin: 0 auto 18px;
+        .coming-card h3 {
+            font-family: "Barlow Condensed", sans-serif;
+            text-transform: uppercase;
+            font-size: 36px;
+            margin-top: 80px;
         }
 
-        .cta p {
-            color: var(--muted);
-            max-width: 600px;
-            margin: 0 auto 30px;
+        .coming-card p {
+            color: #666;
+            font-size: 13px;
+            margin-top: 8px;
         }
 
-        /* =========================
+        /* ==============================
+           ABOUT
+        ============================== */
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+        }
+
+        .about-big {
+            font-family: "Barlow Condensed", sans-serif;
+            text-transform: uppercase;
+            font-size: clamp(45px, 6vw, 75px);
+            line-height: .92;
+            font-weight: 600;
+        }
+
+        .about-big span {
+            color: #555;
+        }
+
+        .about-text {
+            color: #888;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .about-text p + p {
+            margin-top: 22px;
+        }
+
+        /* ==============================
+           YOUTUBE
+        ============================== */
+
+        .youtube {
+            background: #cfcfcf;
+            color: #050505;
+        }
+
+        .youtube-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .youtube-label {
+            font-family: "Barlow Condensed", sans-serif;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .youtube h2 {
+            font-size: clamp(55px, 8vw, 100px);
+        }
+
+        .youtube p {
+            color: #555;
+            max-width: 500px;
+            margin-top: 20px;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .youtube .button {
+            border-color: #111;
+            background: #050505;
+            color: white;
+            white-space: nowrap;
+        }
+
+        .youtube .button:hover {
+            background: transparent;
+            color: #050505;
+        }
+
+        /* ==============================
            FOOTER
-        ========================== */
+        ============================== */
 
         footer {
             padding: 35px 0;
-            border-top: 1px solid var(--border);
+            background: #050505;
         }
 
         .footer-inner {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            align-items: center;
+        }
+
+        .footer-brand {
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
         }
 
         .footer-copy {
-            color: var(--muted);
-            font-size: 0.82rem;
+            color: #555;
+            font-size: 12px;
         }
 
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
+        /* ==============================
+           MOBILE
+        ============================== */
 
-        .footer-links a {
-            color: var(--muted);
-            font-size: 0.82rem;
-        }
+        @media (max-width: 800px) {
 
-        .footer-links a:hover {
-            color: white;
-        }
+            header {
+                height: 65px;
+            }
 
-        /* =========================
-           RESPONSIVE
-        ========================== */
+            nav {
+                gap: 14px;
+            }
 
-        @media (max-width: 900px) {
-            .hero-grid,
-            .about-grid {
-                grid-template-columns: 1fr;
+            nav a {
+                font-size: 11px;
             }
 
             .hero {
-                min-height: auto;
-                padding: 100px 0;
+                min-height: 620px;
             }
 
-            .hero-visual {
-                min-height: 350px;
+            h1 {
+                font-size: 80px;
             }
 
-            .assets-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .section-header {
+                display: block;
             }
 
-            .youtube-box {
-                flex-direction: column;
-                align-items: flex-start;
+            .section-header p {
+                margin-top: 20px;
+            }
+
+            .asset-info {
+                grid-template-columns: 1fr;
+            }
+
+            .asset-side {
+                border-left: none;
+                border-top: 1px solid #292929;
+            }
+
+            .coming-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .youtube-inner {
+                display: block;
+            }
+
+            .youtube .button {
+                margin-top: 30px;
+            }
+
+            .footer-inner {
+                display: block;
+            }
+
+            .footer-copy {
+                margin-top: 10px;
             }
         }
 
-        @media (max-width: 650px) {
-            .nav-links {
+        @media (max-width: 500px) {
+
+            .container {
+                width: min(100% - 28px, 1180px);
+            }
+
+            nav a:nth-child(1),
+            nav a:nth-child(2) {
                 display: none;
             }
 
             h1 {
-                letter-spacing: -3px;
+                font-size: 68px;
             }
 
-            section {
-                padding: 75px 0;
+            h2 {
+                font-size: 48px;
             }
 
-            .assets-grid,
-            .principles {
-                grid-template-columns: 1fr;
+            .asset-main,
+            .asset-side {
+                padding: 25px;
             }
 
-            .code-card {
-                width: 100%;
+            .asset-main h3 {
+                font-size: 35px;
             }
 
-            .youtube-box {
-                padding: 28px;
-            }
-
-            .footer-inner {
+            .hero-buttons {
                 flex-direction: column;
                 align-items: flex-start;
             }
@@ -654,379 +578,196 @@
 
 <body>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+    <!-- HEADER -->
 
-    <nav>
-        <div class="container nav-inner">
+    <header>
+        <div class="container header-inner">
 
-            <a href="#" class="logo">
+            <a href="#" class="brand">
                 nichee<span>solutions</span>
             </a>
 
-            <ul class="nav-links">
-                <li><a href="#assets">Assets</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#youtube">YouTube</a></li>
-                <li>
-                    <a
-                        href="https://u3d.as/3Wud"
-                        target="_blank"
-                        rel="noopener"
-                        class="nav-button"
-                    >
-                        View Asset
-                    </a>
-                </li>
-            </ul>
+            <nav>
+                <a href="#assets">Assets</a>
+                <a href="#about">About</a>
+                <a href="#youtube">YouTube</a>
+            </nav>
 
         </div>
-    </nav>
+    </header>
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- HERO -->
 
     <main>
 
         <section class="hero">
 
-            <div class="container hero-grid">
+            <div class="container">
 
-                <div>
+                <div class="hero-content">
 
-                    <div class="eyebrow">
-                        <span class="status-dot"></span>
-                        Unity Developer & Asset Publisher
+                    <div class="small-title">
+                        Unity Asset Publisher
                     </div>
 
                     <h1>
-                        Tools for
-                        <span class="gradient-text">better games.</span>
+                        Making<br>
+                        <span class="outline">Unity</span><br>
+                        Assets.
                     </h1>
 
                     <p class="hero-description">
-                        Welcome to nicheesolutions. I create Unity tools,
-                        systems and assets designed to help game developers
-                        build, prototype and ship their ideas faster.
+                        nicheesolutions is an independent Unity publisher
+                        focused on gameplay systems, tools and assets for
+                        game developers.
                     </p>
 
                     <div class="hero-buttons">
 
                         <a
                             href="#assets"
-                            class="button button-primary"
+                            class="button primary"
                         >
-                            Explore Assets →
+                            View Assets
                         </a>
 
                         <a
                             href="https://www.youtube.com/@NizkSmith"
                             target="_blank"
                             rel="noopener"
-                            class="button button-secondary"
+                            class="button"
                         >
-                            Watch on YouTube
+                            YouTube
                         </a>
 
                     </div>
 
                 </div>
 
-
-                <div class="hero-visual">
-
-                    <div class="orb"></div>
-
-                    <div class="code-card">
-
-                        <div class="code-top">
-                            <span class="code-dot"></span>
-                            <span class="code-dot"></span>
-                            <span class="code-dot"></span>
-                        </div>
-
-                        <pre><span class="purple">public class</span> <span class="cyan">GameDeveloper</span>
-{
-    <span class="purple">public string</span> publisher =
-        <span class="green">"nicheesolutions"</span>;
-
-    <span class="purple">public string</span> engine =
-        <span class="green">"Unity"</span>;
-
-    <span class="purple">public void</span> CreateAssets()
-    {
-        Build();
-        Improve();
-        Ship();
-    }
-}</pre>
-
-                    </div>
-
-                </div>
-
             </div>
 
         </section>
 
 
-        <!-- =========================
-             ASSETS
-        ========================== -->
+        <!-- ASSETS -->
 
         <section id="assets">
 
             <div class="container">
 
-                <div class="section-heading">
+                <div class="section-header">
 
-                    <div class="section-label">
-                        Featured Work
+                    <div>
+                        <div class="section-number">
+                            01 / ASSETS
+                        </div>
+
+                        <h2>
+                            Current Release
+                        </h2>
                     </div>
 
-                    <h2>
-                        Unity assets
-                    </h2>
-
-                    <p class="section-description">
-                        A growing collection of Unity tools and systems
-                        built by nicheesolutions.
+                    <p>
+                        The current asset published under the
+                        nicheesolutions name.
                     </p>
 
                 </div>
 
 
-                <div class="assets-grid">
+                <div class="asset">
 
-                    <!-- Current Asset -->
+                    <div class="asset-image">
 
-                    <article class="asset-card">
+                        <!--
+                            Put your uploaded Arena FPS banner in
+                            the same folder as this index.html and
+                            name it:
 
-                        <div class="asset-image">
+                            arena-fps.jpg
+                        -->
 
-                            <div class="asset-icon">
-                                FPS
-                            </div>
+                        <img
+                            src="arena-fps.jpg"
+                            alt="Arena FPS Character Controller"
+                        >
 
+                        <div class="asset-image-label">
+                            Unity Asset
                         </div>
 
-                        <div class="asset-content">
+                    </div>
 
-                            <span class="asset-status">
-                                AVAILABLE NOW
-                            </span>
+
+                    <div class="asset-info">
+
+                        <div class="asset-main">
 
                             <h3>
-                                Arena FPS Character Controller
+                                Arena FPS<br>
+                                Character Controller
                             </h3>
 
                             <p>
-                                A Unity character controller designed for
-                                fast-paced first-person gameplay and arena
-                                shooter projects.
+                                A character controller made for
+                                fast-paced first-person gameplay.
+                                Built for Unity projects that need
+                                responsive FPS movement and an
+                                arena-shooter style foundation.
                             </p>
+
+                        </div>
+
+
+                        <div class="asset-side">
+
+                            <div>
+
+                                <div class="asset-meta">
+                                    <div class="meta-label">
+                                        Publisher
+                                    </div>
+
+                                    <div class="meta-value">
+                                        nicheesolutions
+                                    </div>
+                                </div>
+
+
+                                <div class="asset-meta">
+                                    <div class="meta-label">
+                                        Engine
+                                    </div>
+
+                                    <div class="meta-value">
+                                        Unity
+                                    </div>
+                                </div>
+
+
+                                <div class="asset-meta">
+                                    <div class="meta-label">
+                                        Status
+                                    </div>
+
+                                    <div class="meta-value">
+                                        Available
+                                    </div>
+                                </div>
+
+                            </div>
+
 
                             <a
                                 href="https://u3d.as/3Wud"
                                 target="_blank"
                                 rel="noopener"
-                                class="asset-link"
+                                class="button primary"
                             >
-                                View on Unity Asset Store →
+                                View on Unity
                             </a>
 
-                        </div>
-
-                    </article>
-
-
-                    <!-- Future Asset -->
-
-                    <article class="asset-card">
-
-                        <div class="asset-image">
-
-                            <div
-                                class="asset-icon"
-                                style="
-                                    background:
-                                    linear-gradient(
-                                        135deg,
-                                        #252b38,
-                                        #171c25
-                                    );
-                                    color:#8c96a6;
-                                "
-                            >
-                                +
-                            </div>
-
-                        </div>
-
-                        <div class="asset-content">
-
-                            <span class="asset-status"
-                                  style="
-                                    color:#a5adba;
-                                    background:rgba(255,255,255,0.04);
-                                  "
-                            >
-                                COMING SOON
-                            </span>
-
-                            <h3>
-                                More Unity Tools
-                            </h3>
-
-                            <p>
-                                New tools, systems and developer-focused
-                                assets are currently being worked on.
-                            </p>
-
-                            <a href="#youtube" class="asset-link">
-                                Follow development →
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Future Asset -->
-
-                    <article class="asset-card">
-
-                        <div class="asset-image">
-
-                            <div
-                                class="asset-icon"
-                                style="
-                                    background:
-                                    linear-gradient(
-                                        135deg,
-                                        #252b38,
-                                        #171c25
-                                    );
-                                    color:#8c96a6;
-                                "
-                            >
-                                ?
-                            </div>
-
-                        </div>
-
-                        <div class="asset-content">
-
-                            <span class="asset-status"
-                                  style="
-                                    color:#a5adba;
-                                    background:rgba(255,255,255,0.04);
-                                  "
-                            >
-                                IN DEVELOPMENT
-                            </span>
-
-                            <h3>
-                                Future Projects
-                            </h3>
-
-                            <p>
-                                This space will showcase upcoming releases
-                                from nicheesolutions.
-                            </p>
-
-                            <a
-                                href="https://www.youtube.com/@NizkSmith"
-                                target="_blank"
-                                rel="noopener"
-                                class="asset-link"
-                            >
-                                See what I'm building →
-                            </a>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ABOUT
-        ========================== -->
-
-        <section id="about">
-
-            <div class="container about-grid">
-
-                <div class="section-heading">
-
-                    <div class="section-label">
-                        About
-                    </div>
-
-                    <h2>
-                        Built for developers.
-                    </h2>
-
-                    <p class="section-description">
-                        nicheesolutions is my Unity publisher identity,
-                        focused on creating practical tools and systems
-                        that make game development easier.
-                    </p>
-
-                </div>
-
-
-                <div class="about-box">
-
-                    <h3>
-                        My approach
-                    </h3>
-
-                    <p>
-                        I focus on building useful Unity assets with an
-                        emphasis on straightforward workflows, gameplay
-                        systems and tools that developers can actually
-                        integrate into their projects.
-                    </p>
-
-
-                    <div class="principles">
-
-                        <div class="principle">
-                            <strong>Unity First</strong>
-                            <span>
-                                Tools made specifically for Unity developers.
-                            </span>
-                        </div>
-
-                        <div class="principle">
-                            <strong>Practical</strong>
-                            <span>
-                                Focused on solving real development problems.
-                            </span>
-                        </div>
-
-                        <div class="principle">
-                            <strong>Developer Focused</strong>
-                            <span>
-                                Designed with customization and usability in mind.
-                            </span>
-                        </div>
-
-                        <div class="principle">
-                            <strong>Always Improving</strong>
-                            <span>
-                                New projects and improvements are always ahead.
-                            </span>
                         </div>
 
                     </div>
@@ -1038,42 +779,66 @@
         </section>
 
 
-        <!-- =========================
-             YOUTUBE
-        ========================== -->
+        <!-- MORE ASSETS -->
 
-        <section id="youtube" class="youtube-section">
+        <section>
 
             <div class="container">
 
-                <div class="youtube-box">
+                <div class="section-header">
 
                     <div>
-
-                        <div class="youtube-icon">
-                            ▶
+                        <div class="section-number">
+                            02 / NEXT
                         </div>
 
                         <h2>
-                            Follow the development
+                            What's Next
                         </h2>
+                    </div>
+
+                    <p>
+                        More Unity projects and assets will be added
+                        here as they are released.
+                    </p>
+
+                </div>
+
+
+                <div class="coming-grid">
+
+                    <div class="coming-card">
+
+                        <div class="coming-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Upcoming Asset
+                        </h3>
 
                         <p>
-                            Development videos, Unity projects, demos and
-                            other game development content are available on
-                            my YouTube channel.
+                            More information coming soon.
                         </p>
 
                     </div>
 
-                    <a
-                        href="https://www.youtube.com/@NizkSmith"
-                        target="_blank"
-                        rel="noopener"
-                        class="button button-primary"
-                    >
-                        Visit YouTube Channel →
-                    </a>
+
+                    <div class="coming-card">
+
+                        <div class="coming-number">
+                            03
+                        </div>
+
+                        <h3>
+                            In Development
+                        </h3>
+
+                        <p>
+                            Follow the development process on YouTube.
+                        </p>
+
+                    </div>
 
                 </div>
 
@@ -1082,49 +847,97 @@
         </section>
 
 
-        <!-- =========================
-             CTA
-        ========================== -->
+        <!-- ABOUT -->
 
-        <section class="cta">
+        <section id="about">
 
             <div class="container">
 
-                <div class="section-label">
-                    nicheesolutions
+                <div class="section-header">
+
+                    <div>
+                        <div class="section-number">
+                            03 / ABOUT
+                        </div>
+
+                        <h2>
+                            The Publisher
+                        </h2>
+                    </div>
+
                 </div>
 
-                <h2>
-                    Build something awesome with Unity.
-                </h2>
 
-                <p>
-                    Check out the latest asset, follow the development
-                    journey, and stay tuned for future releases.
-                </p>
+                <div class="about-layout">
 
-                <div class="hero-buttons"
-                     style="justify-content:center;">
+                    <div class="about-big">
 
-                    <a
-                        href="https://u3d.as/3Wud"
-                        target="_blank"
-                        rel="noopener"
-                        class="button button-primary"
-                    >
-                        View Arena FPS Controller
-                    </a>
+                        Small team.<br>
+                        <span>Useful tools.</span><br>
+                        Unity.
 
-                    <a
-                        href="https://www.youtube.com/@NizkSmith"
-                        target="_blank"
-                        rel="noopener"
-                        class="button button-secondary"
-                    >
+                    </div>
+
+
+                    <div class="about-text">
+
+                        <p>
+                            nicheesolutions is the publisher name behind
+                            my Unity assets and development projects.
+                        </p>
+
+                        <p>
+                            The goal is simple: make useful things for
+                            Unity developers without overcomplicating them.
+                        </p>
+
+                        <p>
+                            This site will grow as more assets,
+                            projects and development work are released.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- YOUTUBE -->
+
+        <section id="youtube" class="youtube">
+
+            <div class="container youtube-inner">
+
+                <div>
+
+                    <div class="youtube-label">
+                        Development / Videos
+                    </div>
+
+                    <h2>
                         YouTube
-                    </a>
+                    </h2>
+
+                    <p>
+                        Development videos, Unity projects,
+                        demonstrations and other game development
+                        content.
+                    </p>
 
                 </div>
+
+
+                <a
+                    href="https://www.youtube.com/@NizkSmith"
+                    target="_blank"
+                    rel="noopener"
+                    class="button"
+                >
+                    Visit Channel →
+                </a>
 
             </div>
 
@@ -1133,37 +946,18 @@
     </main>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+    <!-- FOOTER -->
 
     <footer>
 
         <div class="container footer-inner">
 
-            <div class="footer-copy">
-                © <span id="year"></span> nicheesolutions.
-                Unity assets & development tools.
+            <div class="footer-brand">
+                nicheesolutions
             </div>
 
-            <div class="footer-links">
-
-                <a
-                    href="https://u3d.as/3Wud"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Unity Asset
-                </a>
-
-                <a
-                    href="https://www.youtube.com/@NizkSmith"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    YouTube
-                </a>
-
+            <div class="footer-copy">
+                © <span id="year"></span> nicheesolutions
             </div>
 
         </div>
