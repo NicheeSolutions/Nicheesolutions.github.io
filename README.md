@@ -1,2 +1,2 @@
-# Nizk.github.io
+# Nicheesolutions.github.io
 Website for my Unity Assets
