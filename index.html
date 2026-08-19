@@ -196,7 +196,7 @@
         }
 
         /* ==============================
-           SECTION
+           SECTIONS
         ============================== */
 
         section {
@@ -235,7 +235,7 @@
         }
 
         /* ==============================
-           FEATURED ASSET
+           ASSET
         ============================== */
 
         .asset {
@@ -244,14 +244,15 @@
         }
 
         .asset-image {
+            position: relative;
             background: #cfcfcf;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 420px;
-            overflow: hidden;
         }
-        
+
         .asset-image img {
             width: auto;
             max-width: 100%;
@@ -320,6 +321,129 @@
         .meta-value {
             font-size: 14px;
             color: #ccc;
+        }
+
+        /* ==============================
+           WEBGL DEMO
+        ============================== */
+
+        .webgl-demo {
+            border-top: 1px solid #292929;
+            background: #080808;
+        }
+
+        .webgl-header {
+            min-height: 105px;
+            padding: 25px 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            border-bottom: 1px solid #292929;
+        }
+
+        .webgl-number {
+            color: #555;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .webgl-header h3 {
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        .webgl-status {
+            color: #777;
+            border: 1px solid #333;
+            padding: 7px 10px;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+        }
+
+        .webgl-content {
+            min-height: 180px;
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .webgl-copy p {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .control {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .control strong {
+            color: #ddd;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        .control span {
+            color: #555;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .demo-button {
+            min-width: 230px;
+            min-height: 75px;
+            padding: 0 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            border: 1px solid #555;
+            background: #eee;
+            color: #050505;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            transition: .15s ease;
+        }
+
+        .demo-button:hover {
+            background: white;
+            border-color: white;
+        }
+
+        .play-symbol {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            background: #050505;
+            color: white;
+            font-size: 11px;
+        }
+
+        .arrow {
+            font-size: 22px;
         }
 
         /* ==============================
@@ -542,6 +666,20 @@
             .footer-copy {
                 margin-top: 10px;
             }
+
+            .webgl-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .webgl-content {
+                display: block;
+            }
+
+            .demo-button {
+                margin-top: 30px;
+                width: 100%;
+            }
         }
 
         @media (max-width: 500px) {
@@ -576,13 +714,24 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .webgl-header,
+            .webgl-content {
+                padding: 25px;
+            }
+
+            .controls {
+                gap: 18px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <!-- ==============================
+         HEADER
+    ============================== -->
 
     <header>
         <div class="container header-inner">
@@ -601,7 +750,9 @@
     </header>
 
 
-    <!-- HERO -->
+    <!-- ==============================
+         HERO
+    ============================== -->
 
     <main>
 
@@ -654,7 +805,9 @@
         </section>
 
 
-        <!-- ASSETS -->
+        <!-- ==============================
+             ASSETS
+        ============================== -->
 
         <section id="assets">
 
@@ -663,6 +816,7 @@
                 <div class="section-header">
 
                     <div>
+
                         <div class="section-number">
                             01 / ASSETS
                         </div>
@@ -670,6 +824,7 @@
                         <h2>
                             Current Release
                         </h2>
+
                     </div>
 
                     <p>
@@ -680,14 +835,15 @@
                 </div>
 
 
+                <!-- ARENA FPS -->
+
                 <div class="asset">
 
                     <div class="asset-image">
 
                         <!--
-                            Put your uploaded Arena FPS banner in
-                            the same folder as this index.html and
-                            name it:
+                            PUT YOUR IMAGE BESIDE THIS HTML FILE
+                            AND NAME IT:
 
                             arena-fps.jpg
                         -->
@@ -703,6 +859,8 @@
 
                     </div>
 
+
+                    <!-- ASSET INFORMATION -->
 
                     <div class="asset-info">
 
@@ -729,6 +887,7 @@
                             <div>
 
                                 <div class="asset-meta">
+
                                     <div class="meta-label">
                                         Publisher
                                     </div>
@@ -736,10 +895,12 @@
                                     <div class="meta-value">
                                         nicheesolutions
                                     </div>
+
                                 </div>
 
 
                                 <div class="asset-meta">
+
                                     <div class="meta-label">
                                         Engine
                                     </div>
@@ -747,10 +908,12 @@
                                     <div class="meta-value">
                                         Unity
                                     </div>
+
                                 </div>
 
 
                                 <div class="asset-meta">
+
                                     <div class="meta-label">
                                         Status
                                     </div>
@@ -758,6 +921,7 @@
                                     <div class="meta-value">
                                         Available
                                     </div>
+
                                 </div>
 
                             </div>
@@ -776,6 +940,90 @@
 
                     </div>
 
+
+                    <!-- ==============================
+                         WEBGL DEMO
+                    ============================== -->
+
+                    <div class="webgl-demo">
+
+                        <div class="webgl-header">
+
+                            <div>
+
+                                <div class="webgl-number">
+                                    01 / 01
+                                </div>
+
+                                <h3>
+                                    PLAY THE WEB DEMO
+                                </h3>
+
+                            </div>
+
+                            <div class="webgl-status">
+                                HTML5 / WEBGL
+                            </div>
+
+                        </div>
+
+
+                        <div class="webgl-content">
+
+                            <div class="webgl-copy">
+
+                                <p>
+                                    Try the Arena FPS Character
+                                    Controller directly in your browser.
+                                </p>
+
+                                <div class="controls">
+
+                                    <div class="control">
+                                        <strong>W A S D</strong>
+                                        <span>Movement</span>
+                                    </div>
+
+                                    <div class="control">
+                                        <strong>CTRL / C</strong>
+                                        <span>Crouch</span>
+                                    </div>
+
+                                    <div class="control">
+                                        <strong>N</strong>
+                                        <span>Noclip</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="https://n1zk.itch.io/arena-fps-character-controller"
+                                target="_blank"
+                                rel="noopener"
+                                class="demo-button"
+                            >
+
+                                <span class="play-symbol">
+                                    ▶
+                                </span>
+
+                                <span>
+                                    LAUNCH DEMO
+                                </span>
+
+                                <span class="arrow">
+                                    →
+                                </span>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
@@ -783,7 +1031,9 @@
         </section>
 
 
-        <!-- MORE ASSETS -->
+        <!-- ==============================
+             MORE ASSETS
+        ============================== -->
 
         <section>
 
@@ -792,6 +1042,7 @@
                 <div class="section-header">
 
                     <div>
+
                         <div class="section-number">
                             02 / NEXT
                         </div>
@@ -799,6 +1050,7 @@
                         <h2>
                             What's Next
                         </h2>
+
                     </div>
 
                     <p>
@@ -851,7 +1103,9 @@
         </section>
 
 
-        <!-- ABOUT -->
+        <!-- ==============================
+             ABOUT
+        ============================== -->
 
         <section id="about">
 
@@ -860,6 +1114,7 @@
                 <div class="section-header">
 
                     <div>
+
                         <div class="section-number">
                             03 / ABOUT
                         </div>
@@ -867,6 +1122,7 @@
                         <h2>
                             The Publisher
                         </h2>
+
                     </div>
 
                 </div>
@@ -909,7 +1165,9 @@
         </section>
 
 
-        <!-- YOUTUBE -->
+        <!-- ==============================
+             YOUTUBE
+        ============================== -->
 
         <section id="youtube" class="youtube">
 
@@ -950,7 +1208,9 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- ==============================
+         FOOTER
+    ============================== -->
 
     <footer>
 
