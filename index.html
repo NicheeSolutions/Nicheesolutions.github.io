@@ -3,456 +3,1178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUBLISHER PROFILE // UNITY ASSET STORE</title>
+
+    <title>nicheesolutions | Unity Developer & Asset Publisher</title>
+
+    <meta
+        name="description"
+        content="nicheesolutions — Unity developer and asset publisher creating tools, systems and assets for game developers."
+    >
+
     <style>
-        /* CSS RESET & VARIABLES */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        :root {
+            --bg: #07090d;
+            --bg-soft: #0d1118;
+            --card: #111720;
+            --card-hover: #151d28;
+            --border: rgba(255,255,255,0.08);
+            --text: #f5f7fa;
+            --muted: #9aa6b5;
+            --accent: #6c63ff;
+            --accent-2: #00d4ff;
+            --success: #58e68b;
+            --max-width: 1180px;
         }
 
-        :root {
-            --bg-grey: #b0b0b0;
-            --black: #000000;
-            --dark-charcoal: #1a1a1a;
-            --font-main: 'Impact', 'Arial Black', -apple-system, sans-serif;
-            --font-mono: 'Courier New', Courier, monospace;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-grey);
-            color: var(--black);
-            font-family: var(--font-mono);
-            line-height: 1.4;
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+            background:
+                radial-gradient(circle at 80% 10%, rgba(108,99,255,0.15), transparent 30%),
+                radial-gradient(circle at 10% 30%, rgba(0,212,255,0.08), transparent 25%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
         }
 
-        /* BRUTALIST GRID & BORDERS */
-        .border-heavy {
-            border: 4px solid var(--black);
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
-        .border-bottom {
-            border-bottom: 4px solid var(--black);
+        .container {
+            width: min(92%, var(--max-width));
+            margin: auto;
         }
 
-        /* TYPOGRAPHY */
-        h1, h2, h3 {
-            font-family: var(--font-main);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 0.9;
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 9, 13, 0.82);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
         }
 
-        p {
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        /* HERO HEADER SECTION */
-        header {
-            display: grid;
-            grid-template-columns: 1fr;
-            background: var(--bg-grey);
-            margin-bottom: 40px;
-        }
-
-        @media (min-width: 768px) {
-            header {
-                grid-template-columns: 2fr 1fr;
-            }
-        }
-
-        .hero-title-box {
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .hero-title-box h1 {
-            font-size: clamp(2.5rem, 6vw, 5.5rem);
-            color: var(--black);
-            margin-bottom: 10px;
-        }
-
-        .hero-title-box .tagline {
-            font-family: var(--font-main);
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            color: var(--dark-charcoal);
-            text-transform: uppercase;
-        }
-
-        .hero-silhouette-box {
-            background: var(--bg-grey);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            min-height: 250px;
-        }
-
-        /* SVG SILHOUETTE MOTIF */
-        .character-motif {
-            width: 120px;
-            height: 120px;
-            fill: var(--black);
-        }
-
-        /* SECTION HEADERS */
-        .section-header {
-            background: var(--black);
-            color: var(--bg-grey);
-            padding: 12px 20px;
-            font-size: 1.8rem;
+        .nav-inner {
+            height: 72px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 0;
         }
 
-        .section-header .chevrons {
-            font-family: var(--font-mono);
-            letter-spacing: -2px;
-            font-weight: bold;
+        .logo {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        /* CATALOG GRID */
-        .catalog-container {
-            margin-bottom: 60px;
+        .logo span {
+            color: var(--accent);
         }
 
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .catalog-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .catalog-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .asset-card {
-            background: var(--bg-grey);
+        .nav-links {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: transform 0.1s ease;
+            gap: 28px;
+            align-items: center;
+            list-style: none;
         }
 
-        .asset-card:hover {
-            background: #a3a3a3;
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.92rem;
+            transition: 0.2s ease;
         }
 
-        .asset-thumb {
-            width: 100%;
-            height: 200px;
-            background: var(--dark-charcoal);
-            border-bottom: 4px solid var(--black);
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-button {
+            padding: 9px 16px;
+            border: 1px solid rgba(108,99,255,0.5);
+            border-radius: 8px;
+            color: white !important;
+            background: rgba(108,99,255,0.12);
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 720px;
             display: flex;
             align-items: center;
-            justify-content: center;
             position: relative;
             overflow: hidden;
         }
 
-        .asset-thumb-text {
-            color: var(--bg-grey);
-            font-family: var(--font-main);
-            font-size: 1.5rem;
-            letter-spacing: 2px;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 70px;
+            align-items: center;
         }
 
-        .asset-details {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .asset-title {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: var(--black);
-        }
-
-        .asset-desc {
-            margin-bottom: 20px;
-            color: var(--dark-charcoal);
-        }
-
-        /* BUTTONS & LINKS */
-        .btn-store {
+        .eyebrow {
             display: inline-flex;
             align-items: center;
-            justify-content: space-between;
-            background: var(--black);
-            color: var(--bg-grey);
-            text-decoration: none;
-            font-family: var(--font-main);
+            gap: 8px;
+            padding: 7px 12px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: rgba(255,255,255,0.025);
+            color: var(--muted);
+            font-size: 0.82rem;
+            margin-bottom: 22px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 12px var(--success);
+        }
+
+        h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 0.95;
+            letter-spacing: -5px;
+            margin-bottom: 25px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(
+                100deg,
+                #ffffff 10%,
+                #aaa5ff 45%,
+                #00d4ff 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            color: var(--muted);
             font-size: 1.1rem;
-            padding: 12px 16px;
-            border: 2px solid var(--black);
-            width: 100%;
+            max-width: 620px;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 20px;
+            border-radius: 9px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            transition: 0.2s ease;
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, var(--accent), #554cff);
+            box-shadow: 0 12px 30px rgba(108,99,255,0.2);
+        }
+
+        .button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(108,99,255,0.3);
+        }
+
+        .button-secondary {
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.025);
+        }
+
+        .button-secondary:hover {
+            background: rgba(255,255,255,0.07);
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           HERO VISUAL
+        ========================== */
+
+        .hero-visual {
+            position: relative;
+            min-height: 430px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .orb {
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    rgba(0,212,255,0.9),
+                    rgba(108,99,255,0.45) 35%,
+                    transparent 70%
+                );
+            filter: blur(10px);
+            opacity: 0.65;
+        }
+
+        .code-card {
+            position: relative;
+            width: min(100%, 460px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: rgba(12,16,23,0.9);
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.5),
+                0 0 80px rgba(108,99,255,0.12);
+            overflow: hidden;
+        }
+
+        .code-top {
+            height: 42px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 0 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .code-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #ff5f57;
+        }
+
+        .code-dot:nth-child(2) {
+            background: #ffbd2e;
+        }
+
+        .code-dot:nth-child(3) {
+            background: #28c840;
+        }
+
+        pre {
+            padding: 24px;
+            overflow: auto;
+            color: #b7c4d6;
+            font-size: 0.82rem;
+            line-height: 1.8;
+        }
+
+        .purple {
+            color: #b69cff;
+        }
+
+        .cyan {
+            color: #55e6ff;
+        }
+
+        .green {
+            color: #78e08f;
+        }
+
+        .orange {
+            color: #ffbd69;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin-bottom: 45px;
+        }
+
+        .section-label {
+            color: var(--accent-2);
             text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            margin-bottom: 10px;
         }
 
-        .btn-store:hover {
-            background: var(--dark-charcoal);
-            color: #ffffff;
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            letter-spacing: -2px;
+            line-height: 1.05;
+            margin-bottom: 15px;
         }
 
-        .btn-store .arrow-icon {
-            display: flex;
-            gap: 2px;
+        .section-description {
+            color: var(--muted);
         }
 
-        /* ABOUT & INFO SECTION */
-        .about-section {
-            margin-bottom: 60px;
+        /* =========================
+           ASSET CARD
+        ========================== */
+
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
-        .about-content {
-            padding: 30px 20px;
-            background: var(--bg-grey);
+        .asset-card {
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.045),
+                rgba(255,255,255,0.015)
+            );
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.25s ease;
         }
 
-        .about-list {
-            list-style: none;
-            margin-top: 15px;
+        .asset-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(108,99,255,0.45);
+            background: var(--card-hover);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
         }
 
-        .about-list li {
+        .asset-image {
+            min-height: 220px;
+            padding: 30px;
             display: flex;
             align-items: center;
-            margin-bottom: 12px;
-            font-weight: bold;
-            font-size: 1.1rem;
+            justify-content: center;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(108,99,255,0.18),
+                    rgba(0,212,255,0.06)
+                );
         }
 
-        .about-list li::before {
-            content: '';
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            background-color: var(--black);
-            margin-right: 15px;
-            /* Inline SVG silhouette bullet point technique */
-            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M40 10 L50 10 L55 25 L45 25 Z M45 25 L65 30 L80 35 L75 42 L60 38 L55 50 L70 52 L85 48 L87 55 L70 58 L65 70 L75 80 L68 87 L52 72 L45 88 L35 88 L42 62 L35 48 L25 55 L20 48 L38 32 Z"/></svg>') no-repeat center;
-            -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M40 10 L50 10 L55 25 L45 25 Z M45 25 L65 30 L80 35 L75 42 L60 38 L55 50 L70 52 L85 48 L87 55 L70 58 L65 70 L75 80 L68 87 L52 72 L45 88 L35 88 L42 62 L35 48 L25 55 L20 48 L38 32 Z"/></svg>') no-repeat center;
-            mask-size: contain;
-            -webkit-mask-size: contain;
-        }
-
-        /* SUPPORT & LINKS SECTION */
-        .links-section {
-            margin-bottom: 40px;
-        }
-
-        .links-grid {
+        .asset-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 22px;
             display: grid;
-            grid-template-columns: 1fr;
-            border-top: none;
+            place-items: center;
+            font-size: 2.4rem;
+            font-weight: 900;
+            background:
+                linear-gradient(135deg, #665cff, #00c9ff);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
         }
 
-        @media (min-width: 768px) {
-            .links-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .asset-content {
+            padding: 25px;
         }
 
-        .link-item {
+        .asset-status {
+            display: inline-block;
+            color: #7de99e;
+            background: rgba(88,230,139,0.08);
+            border: 1px solid rgba(88,230,139,0.15);
+            border-radius: 100px;
+            padding: 4px 9px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 13px;
+        }
+
+        .asset-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 9px;
+        }
+
+        .asset-content p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .asset-link {
+            color: #aaa5ff;
+            font-weight: 700;
+            font-size: 0.88rem;
+        }
+
+        .asset-link:hover {
+            color: white;
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-box {
+            padding: 35px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.025);
+            border-radius: 16px;
+        }
+
+        .about-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .about-box p {
+            color: var(--muted);
+        }
+
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .principle {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.018);
+        }
+
+        .principle strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .principle span {
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        /* =========================
+           YOUTUBE
+        ========================== */
+
+        .youtube-section {
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(108,99,255,0.08),
+                    rgba(0,212,255,0.04)
+                );
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .youtube-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            padding: 45px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: rgba(8,11,16,0.65);
+        }
+
+        .youtube-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            background: #ff0033;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+        }
+
+        .youtube-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .youtube-box p {
+            color: var(--muted);
+            max-width: 650px;
+        }
+
+        /* =========================
+           CTA
+        ========================== */
+
+        .cta {
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .cta h2 {
+            max-width: 800px;
+            margin: 0 auto 18px;
+        }
+
+        .cta p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            padding: 35px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px;
-            background: var(--bg-grey);
-            color: var(--black);
-            text-decoration: none;
-            font-family: var(--font-main);
-            font-size: 1.4rem;
-            border-bottom: 4px solid var(--black);
+            gap: 20px;
         }
 
-        @media (min-width: 768px) {
-            .link-item {
-                border-right: 4px solid var(--black);
-                border-bottom: none;
+        .footer-copy {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
             }
-            .link-item:last-child {
-                border-right: none;
+
+            .hero {
+                min-height: auto;
+                padding: 100px 0;
+            }
+
+            .hero-visual {
+                min-height: 350px;
+            }
+
+            .assets-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .youtube-box {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
-        .link-item:hover {
-            background: var(--black);
-            color: var(--bg-grey);
-        }
+        @media (max-width: 650px) {
+            .nav-links {
+                display: none;
+            }
 
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            border-top: 4px solid var(--black);
-        }
+            h1 {
+                letter-spacing: -3px;
+            }
 
-        /* FUNCTIONAL CHEVRON SVG */
-        .chevron-svg {
-            width: 24px;
-            height: 16px;
-            fill: currentColor;
+            section {
+                padding: 75px 0;
+            }
+
+            .assets-grid,
+            .principles {
+                grid-template-columns: 1fr;
+            }
+
+            .code-card {
+                width: 100%;
+            }
+
+            .youtube-box {
+                padding: 28px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- HERO HEADER -->
-    <header class="border-heavy">
-        <div class="hero-title-box">
-            <h1>[PUBLISHER NAME]</h1>
-            <div class="tagline">HIGH-PERFORMANCE UNITY TOOLS</div>
-        </div>
-        <div class="hero-silhouette-box border-bottom">
-            <!-- JUMPING CHARACTER SILHOUETTE MOTIF -->
-            <svg class="character-motif" viewBox="0 0 100 100">
-                <path d="M40 10 L50 10 L55 25 L45 25 Z M45 25 L65 30 L80 35 L75 42 L60 38 L55 50 L70 52 L85 48 L87 55 L70 58 L65 70 L75 80 L68 87 L52 72 L45 88 L35 88 L42 62 L35 48 L25 55 L20 48 L38 32 Z"/>
-            </svg>
-        </div>
-    </header>
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-    <!-- ASSET CATALOG -->
-    <section class="catalog-container">
-        <div class="section-header border-heavy">
-            <h2>ASSET CATALOG</h2>
-            <div class="chevrons">&gt;&gt;&gt;&gt;</div>
-        </div>
+    <nav>
+        <div class="container nav-inner">
 
-        <div class="catalog-grid">
-            
-            <!-- ASSET SLOT 1 -->
-            <div class="asset-card border-heavy">
-                <div class="asset-thumb">
-                    <span class="asset-thumb-text">[ASSET PREVIEW]</span>
-                </div>
-                <div class="asset-details">
-                    <div>
-                        <h3 class="asset-title">ARENA FPS CONTROLLER</h3>
-                        <p class="asset-desc">Fast-paced, responsive first-person movement system engineered for arena shooters.</p>
-                    </div>
-                    <a href="https://u3d.as/3Wud" class="btn-store" target="_blank">
-                        View on Asset Store
-                        <span class="arrow-icon">
-                            <svg class="chevron-svg" viewBox="0 0 40 20">
-                                <path d="M0 0 L10 10 L0 20 L5 20 L15 10 L5 0 Z M10 0 L20 10 L10 20 L15 20 L25 10 L15 0 Z M20 0 L30 10 L20 20 L25 20 L35 10 L25 0 Z"/>
-                            </svg>
-                        </span>
+            <a href="#" class="logo">
+                nichee<span>solutions</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#assets">Assets</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#youtube">YouTube</a></li>
+                <li>
+                    <a
+                        href="https://u3d.as/3Wud"
+                        target="_blank"
+                        rel="noopener"
+                        class="nav-button"
+                    >
+                        View Asset
                     </a>
-                </div>
-            </div>
-
-            <!-- ASSET SLOT 2 -->
-            <div class="asset-card border-heavy">
-                <div class="asset-thumb">
-                    <span class="asset-thumb-text">[ASSET PREVIEW]</span>
-                </div>
-                <div class="asset-details">
-                    <div>
-                        <h3 class="asset-title">ADVANCED AI SYSTEM</h3>
-                        <p class="asset-desc">Modular finite state machine and pathfinding solution for combat NPCs.</p>
-                    </div>
-                    <a href="#" class="btn-store" target="_blank">
-                        View on Asset Store
-                        <span class="arrow-icon">
-                            <svg class="chevron-svg" viewBox="0 0 40 20">
-                                <path d="M0 0 L10 10 L0 20 L5 20 L15 10 L5 0 Z M10 0 L20 10 L10 20 L15 20 L25 10 L15 0 Z M20 0 L30 10 L20 20 L25 20 L35 10 L25 0 Z"/>
-                            </svg>
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- ASSET SLOT 3 -->
-            <div class="asset-card border-heavy">
-                <div class="asset-thumb">
-                    <span class="asset-thumb-text">[ASSET PREVIEW]</span>
-                </div>
-                <div class="asset-details">
-                    <div>
-                        <h3 class="asset-title">WEAPON KINEMATICS</h3>
-                        <p class="asset-desc">Procedural recoil, sway, and animation framework for modular firearms.</p>
-                    </div>
-                    <a href="#" class="btn-store" target="_blank">
-                        View on Asset Store
-                        <span class="arrow-icon">
-                            <svg class="chevron-svg" viewBox="0 0 40 20">
-                                <path d="M0 0 L10 10 L0 20 L5 20 L15 10 L5 0 Z M10 0 L20 10 L10 20 L15 20 L25 10 L15 0 Z M20 0 L30 10 L20 20 L25 20 L35 10 L25 0 Z"/>
-                            </svg>
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ABOUT / PROFILE INFO -->
-    <section class="about-section">
-        <div class="section-header border-heavy">
-            <h2>PUBLISHER FOCUS</h2>
-            <div class="chevrons">&gt;&gt;&gt;&gt;</div>
-        </div>
-        <div class="about-content border-heavy" style="border-top: none;">
-            <p>Specializing in modular, high-performance Unity tools designed to accelerate core gameplay development. Zero bloat, fully documented, and built for production environments.</p>
-            <ul class="about-list">
-                <li>FPS & Action Character Mechanics</li>
-                <li>Production-Ready C# Architectures</li>
-                <li>Low-Overhead Performance Optimization</li>
+                </li>
             </ul>
-        </div>
-    </section>
 
-    <!-- SUPPORT & LINKS -->
-    <section class="links-section">
-        <div class="section-header border-heavy">
-            <h2>DOCUMENTATION & SUPPORT</h2>
-            <div class="chevrons">&gt;&gt;&gt;&gt;</div>
         </div>
-        <div class="links-grid border-heavy" style="border-top: none;">
-            <a href="#" class="link-item">
-                DOCUMENTATION
-                <span>&gt;&gt;</span>
-            </a>
-            <a href="#" class="link-item">
-                DISCORD COMMUNITY
-                <span>&gt;&gt;</span>
-            </a>
-            <a href="mailto:support@example.com" class="link-item">
-                EMAIL SUPPORT
-                <span>&gt;&gt;</span>
-            </a>
-        </div>
-    </section>
+    </nav>
 
-    <!-- FOOTER -->
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="container hero-grid">
+
+                <div>
+
+                    <div class="eyebrow">
+                        <span class="status-dot"></span>
+                        Unity Developer & Asset Publisher
+                    </div>
+
+                    <h1>
+                        Tools for
+                        <span class="gradient-text">better games.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Welcome to nicheesolutions. I create Unity tools,
+                        systems and assets designed to help game developers
+                        build, prototype and ship their ideas faster.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="#assets"
+                            class="button button-primary"
+                        >
+                            Explore Assets →
+                        </a>
+
+                        <a
+                            href="https://www.youtube.com/@NizkSmith"
+                            target="_blank"
+                            rel="noopener"
+                            class="button button-secondary"
+                        >
+                            Watch on YouTube
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-visual">
+
+                    <div class="orb"></div>
+
+                    <div class="code-card">
+
+                        <div class="code-top">
+                            <span class="code-dot"></span>
+                            <span class="code-dot"></span>
+                            <span class="code-dot"></span>
+                        </div>
+
+                        <pre><span class="purple">public class</span> <span class="cyan">GameDeveloper</span>
+{
+    <span class="purple">public string</span> publisher =
+        <span class="green">"nicheesolutions"</span>;
+
+    <span class="purple">public string</span> engine =
+        <span class="green">"Unity"</span>;
+
+    <span class="purple">public void</span> CreateAssets()
+    {
+        Build();
+        Improve();
+        Ship();
+    }
+}</pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ASSETS
+        ========================== -->
+
+        <section id="assets">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        Featured Work
+                    </div>
+
+                    <h2>
+                        Unity assets
+                    </h2>
+
+                    <p class="section-description">
+                        A growing collection of Unity tools and systems
+                        built by nicheesolutions.
+                    </p>
+
+                </div>
+
+
+                <div class="assets-grid">
+
+                    <!-- Current Asset -->
+
+                    <article class="asset-card">
+
+                        <div class="asset-image">
+
+                            <div class="asset-icon">
+                                FPS
+                            </div>
+
+                        </div>
+
+                        <div class="asset-content">
+
+                            <span class="asset-status">
+                                AVAILABLE NOW
+                            </span>
+
+                            <h3>
+                                Arena FPS Character Controller
+                            </h3>
+
+                            <p>
+                                A Unity character controller designed for
+                                fast-paced first-person gameplay and arena
+                                shooter projects.
+                            </p>
+
+                            <a
+                                href="https://u3d.as/3Wud"
+                                target="_blank"
+                                rel="noopener"
+                                class="asset-link"
+                            >
+                                View on Unity Asset Store →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Future Asset -->
+
+                    <article class="asset-card">
+
+                        <div class="asset-image">
+
+                            <div
+                                class="asset-icon"
+                                style="
+                                    background:
+                                    linear-gradient(
+                                        135deg,
+                                        #252b38,
+                                        #171c25
+                                    );
+                                    color:#8c96a6;
+                                "
+                            >
+                                +
+                            </div>
+
+                        </div>
+
+                        <div class="asset-content">
+
+                            <span class="asset-status"
+                                  style="
+                                    color:#a5adba;
+                                    background:rgba(255,255,255,0.04);
+                                  "
+                            >
+                                COMING SOON
+                            </span>
+
+                            <h3>
+                                More Unity Tools
+                            </h3>
+
+                            <p>
+                                New tools, systems and developer-focused
+                                assets are currently being worked on.
+                            </p>
+
+                            <a href="#youtube" class="asset-link">
+                                Follow development →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Future Asset -->
+
+                    <article class="asset-card">
+
+                        <div class="asset-image">
+
+                            <div
+                                class="asset-icon"
+                                style="
+                                    background:
+                                    linear-gradient(
+                                        135deg,
+                                        #252b38,
+                                        #171c25
+                                    );
+                                    color:#8c96a6;
+                                "
+                            >
+                                ?
+                            </div>
+
+                        </div>
+
+                        <div class="asset-content">
+
+                            <span class="asset-status"
+                                  style="
+                                    color:#a5adba;
+                                    background:rgba(255,255,255,0.04);
+                                  "
+                            >
+                                IN DEVELOPMENT
+                            </span>
+
+                            <h3>
+                                Future Projects
+                            </h3>
+
+                            <p>
+                                This space will showcase upcoming releases
+                                from nicheesolutions.
+                            </p>
+
+                            <a
+                                href="https://www.youtube.com/@NizkSmith"
+                                target="_blank"
+                                rel="noopener"
+                                class="asset-link"
+                            >
+                                See what I'm building →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section id="about">
+
+            <div class="container about-grid">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        About
+                    </div>
+
+                    <h2>
+                        Built for developers.
+                    </h2>
+
+                    <p class="section-description">
+                        nicheesolutions is my Unity publisher identity,
+                        focused on creating practical tools and systems
+                        that make game development easier.
+                    </p>
+
+                </div>
+
+
+                <div class="about-box">
+
+                    <h3>
+                        My approach
+                    </h3>
+
+                    <p>
+                        I focus on building useful Unity assets with an
+                        emphasis on straightforward workflows, gameplay
+                        systems and tools that developers can actually
+                        integrate into their projects.
+                    </p>
+
+
+                    <div class="principles">
+
+                        <div class="principle">
+                            <strong>Unity First</strong>
+                            <span>
+                                Tools made specifically for Unity developers.
+                            </span>
+                        </div>
+
+                        <div class="principle">
+                            <strong>Practical</strong>
+                            <span>
+                                Focused on solving real development problems.
+                            </span>
+                        </div>
+
+                        <div class="principle">
+                            <strong>Developer Focused</strong>
+                            <span>
+                                Designed with customization and usability in mind.
+                            </span>
+                        </div>
+
+                        <div class="principle">
+                            <strong>Always Improving</strong>
+                            <span>
+                                New projects and improvements are always ahead.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             YOUTUBE
+        ========================== -->
+
+        <section id="youtube" class="youtube-section">
+
+            <div class="container">
+
+                <div class="youtube-box">
+
+                    <div>
+
+                        <div class="youtube-icon">
+                            ▶
+                        </div>
+
+                        <h2>
+                            Follow the development
+                        </h2>
+
+                        <p>
+                            Development videos, Unity projects, demos and
+                            other game development content are available on
+                            my YouTube channel.
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="https://www.youtube.com/@NizkSmith"
+                        target="_blank"
+                        rel="noopener"
+                        class="button button-primary"
+                    >
+                        Visit YouTube Channel →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+
+        <section class="cta">
+
+            <div class="container">
+
+                <div class="section-label">
+                    nicheesolutions
+                </div>
+
+                <h2>
+                    Build something awesome with Unity.
+                </h2>
+
+                <p>
+                    Check out the latest asset, follow the development
+                    journey, and stay tuned for future releases.
+                </p>
+
+                <div class="hero-buttons"
+                     style="justify-content:center;">
+
+                    <a
+                        href="https://u3d.as/3Wud"
+                        target="_blank"
+                        rel="noopener"
+                        class="button button-primary"
+                    >
+                        View Arena FPS Controller
+                    </a>
+
+                    <a
+                        href="https://www.youtube.com/@NizkSmith"
+                        target="_blank"
+                        rel="noopener"
+                        class="button button-secondary"
+                    >
+                        YouTube
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
-        &copy; 2026 [YOUR PUBLISHER NAME]. ALL RIGHTS RESERVED. POWERED BY UNITY ASSET STORE.
+
+        <div class="container footer-inner">
+
+            <div class="footer-copy">
+                © <span id="year"></span> nicheesolutions.
+                Unity assets & development tools.
+            </div>
+
+            <div class="footer-links">
+
+                <a
+                    href="https://u3d.as/3Wud"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Unity Asset
+                </a>
+
+                <a
+                    href="https://www.youtube.com/@NizkSmith"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    YouTube
+                </a>
+
+            </div>
+
+        </div>
+
     </footer>
+
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
 
 </body>
 </html>
